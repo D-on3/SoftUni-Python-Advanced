@@ -5,14 +5,14 @@ Python Advanced - may 2022
 https://softuni.bg/trainings/3704/python-advanced-may-2022
 
 The Python Advanced course builds on Python language skills by exploring more complex concepts typical of the language. In the course you will learn to create linear data structures, to solve algorithmic problems (problem solving skills), you will work with stacks and queues (Stacks & Queues), tuples and sets (Tuples & Sets), matrices (Multidimensional Lists), as well and files and directories. Attention will be paid to the functional programming paradigm. You will take a deeper look at recursive functions and functions with multiple arguments. The development environment that will be used by the training team is PyCharm, but each trainee is free to use tools of preference.
-
-Skills you will acquire
-Working with two-dimensional data structures
-Creating linear data structures
-Application of basic algorithms
-Application of functional programming
-Work with data streams, files and directories
-Error handling
+\
+-Skills you will acquire
+-Working with two-dimensional data structures
+-Creating linear data structures
+-Application of basic algorithms
+-Application of functional programming
+-Work with data streams, files and directories
+-Error handling
 
 
 
