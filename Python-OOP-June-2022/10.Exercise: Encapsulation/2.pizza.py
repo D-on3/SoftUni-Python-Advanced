@@ -10,3 +10,5 @@ class Pizza:
     @classmethod
     def quattro_formaggi(cls):
         return cls(["mozzarella", "gorgonzola", "fontina", "parmigiano"])
+
+

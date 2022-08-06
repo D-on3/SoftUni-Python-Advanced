@@ -1,11 +1,12 @@
-from project.hero import Hero
 from project.elf import Elf
-# from project.muself import MuseElf
-# from project.wizard import Wizard
-# from project.darkwizard import DarkWizard
-# from project.soulmaster import Soulmaster
-# from project.knight import Knight
-# from project.blade import Blade
+from project.hero import Hero
+
+from project.muse_elf import MuseElf
+from project.wizard import Wizard
+from project.dark_wizard import DarkWizard
+from project.soul_master import SoulMaster
+from project.knight import Knight
+from project.blade_knight import BladeKnight
 
 
 hero = Hero("H", 4)
