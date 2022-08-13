@@ -10,7 +10,6 @@ class Calculator(tk.Tk):
         # App size
         self.window.geometry("400x400")
         self.window.resizable(0,0)
-
         self.window.title("Some Calc")
 
 
