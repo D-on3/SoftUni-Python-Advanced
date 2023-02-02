@@ -1,0 +1,157 @@
+class CustomList:
+    def __init__(self):
+        self.__values = []
+
+    # •	append(value) - Adds a value to the end of the list. Returns the list.
+
+    def append(self, value):
+        self.__values.append(value)
+        return self
+
+    # •	remove(index) - Removes the value on the index. Returns the value removed.
+
+    def remove(self, index):
+        self.__validate_index(index)
+        return self.__values.pop(index)
+
+    def __validate_index(self, index, min_index=None, max_index=None):
+        if not min_index:
+            min_index = -self.size()
+        if not max_index:
+            max_index = self.size()
+        if not isinstance(index, int):
+            raise TypeError('Index should be an integer')
+
+        if index < min_index or max_index <= index:
+            raise IndexError('Index is out of range')
+
+    # •	size() - Returns the length of the list.
+    def size(self):
+        return len(self.__values)
+
+    # •	get(index) - Returns the value on the index.
+    def get(self, index):
+        self.__validate_index(index)
+        return self.__values[index]
+
+    # •	extend(iterable) - Appends the iterable to the list. Returns the new list.
+    def extend(self, values):
+        [self.append(v) for v in values]
+        return self
+
+    # •	insert(index, value) - Adds the value on the specific index. Returns the list.
+    def insert(self, index, value):
+        self.__validate_index(index, min_index=-self.size() + 1, max_index=self.size() + 1)
+        self.__values.insert(index, value)
+
+        return self
+
+    # •	pop() - Removes the last value and returns it.
+    def pop(self):
+        if not self.__values:
+            raise IndexError("pop from empty list")
+        return self.__values.pop()
+
+    def __str__(self):
+        return f"[{', '.join(str(x) for x in self.__values)}]"
+
+    # •	clear() - Removes all values, contained in the list.
+    def clear(self):
+        self.__values.clear()
+
+    # •	index(value) - Returns the index of the given value.
+    def index(self, value):
+        if value not in self.__values:
+            raise ValueError(f"{value} not in the list")
+        return self.__values.index(value)
+
+    # •	count(value) - Returns the number of times the value is contained in the list.
+    def count(self, value):
+        return self.__values.count(value)
+
+    # •	reverse() - Returns the values of the list in reverse order.
+    def reverse(self):
+        return self.__values[::-1]
+
+    # •	copy() - Returns a copy of the list.
+    def copy(self):
+        return self.new_list(self.__values)
+
+    @classmethod
+    def new_list(cls, values):
+        ll = cls()
+        [ll.append(v) for v in values]
+        return ll
+
+    # •	add_first(value) - Adds the value at the beginning of the list
+    def add_first(self, value):
+        self.insert(0, value)
+
+    # •	dictionize() - Returns the list as a dictionary: The keys will be each value on an even position and their values will be each value on an odd position. \
+    #                  If the last value on an even position, it’s value will be " " (space)
+    def dictionize(self):
+
+        dict_values = self.__values.copy()
+        if len(dict_values) % 2 == 1:
+            dict_values.append(' ')
+
+        return {dict_values[index]: dict_values[index + 1] for index in range(0, len(dict_values), 2)}
+
+    # •	move(amount) - Move the first "amount" of values to the end of the list. Returns the list.
+    def move(self, count):
+        if count == 0:
+            return self
+        if count < 0 or self.size() < count:
+            raise IndexError('Invalid move')
+
+        self.__values = self.__values[count:] + self.__values[:count]
+
+        return self
+
+    # •	sum() - Returns the sum of the list. If the value is not a number, add the length of the value to the overall number.
+    def sum(self):
+        return sum(self.__values)
+
+    # •	overbound() - Returns the index of the biggest value. If the value is not a number, check it’s length.
+    def overbound(self):
+
+        overbound_values = [self.__check_value(x) for x in self.__values]
+        value = max(overbound_values)
+        return overbound_values.index(value)
+
+    @staticmethod
+    def __check_value(value):
+        if isinstance(value, int):
+            return value
+        if hasattr(value, '__len__'):
+            return len(value)
+
+        raise ValueError('Invalid value')
+
+    # •	underbound() - Returns the index of the smallest value. If the value is not a number, check it’s length.
+    def underbound(self):
+        underbound_values = [self.__check_value(x) for x in self.__values]
+        value = min(underbound_values)
+        return underbound_values.index(value)
+
+
+cl = CustomList()
+cl.append(1)
+cl.append(2)
+cl.append(3)
+print(cl)
+# cl.pop()
+cl.insert(3, 4)
+print(cl)
+print(cl.reverse())
+print(cl.copy())
+cl.add_first(7)
+print(cl)
+print(cl.dictionize())
+print(cl.move(1))
+print(cl.overbound())
+cl.append('maxvalue')
+print(cl)
+print(cl.overbound())
+cl.append(-1)
+print(cl.underbound())
