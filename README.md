@@ -29,3 +29,4 @@ The Python OOP course will teach you the principles of object-oriented programmi
 - Unit testing
 - Working with iterators and generators
 - Working with decorators
+
